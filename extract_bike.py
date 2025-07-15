@@ -5,7 +5,7 @@ import requests
 
 
 #Make API Call
-url = "https://api.tfl.gov.uk/BikePoit"
+url = "https://api.tfl.gov.uk/BikePoint"
 response = requests.get(url)
 
 #Setting up multiple tries
