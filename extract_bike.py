@@ -12,7 +12,7 @@ response = requests.get(url)
 max_tries = 5
 current_try = 0
 wait_time = 1
-#Loop through multiple times
+
 while current_try < max_tries: 
 #Handle Error
     try: 
