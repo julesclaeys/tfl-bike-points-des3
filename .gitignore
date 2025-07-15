@@ -1,3 +1,7 @@
 .venv
 .env
 data
+*.pyc
+*.json
+__pycache__
+
