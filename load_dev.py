@@ -4,16 +4,36 @@ import os
 import boto3
 from dotenv import load_dotenv
 
-load_dotenv()
+def load_bikes(): 
 
-#Creating our Variables from .env
-aws_acces = os.getenv("ACCESS_KEY")
-aws_secret = os.getenv("SECRET_KEY")
-aws_bucket = os.getenv("AWS_BUCKET_NAME")
+    load_dotenv()
 
-#Setting client up
-s3_client = boto3.client(
-    's3',
-    aws_access_key_id = aws_acces,
-    aws_secret_access_key = aws_secret
-)
+    #Creating our Variables from .env
+    aws_acces = os.getenv("ACCESS_KEY")
+    aws_secret = os.getenv("SECRET_KEY")
+    aws_bucket = os.getenv("AWS_BUCKET_NAME")
+
+    #Setting client up
+    s3_client = boto3.client(
+        's3',
+        aws_access_key_id = aws_acces,
+        aws_secret_access_key = aws_secret
+    )
+
+    #Setting up variables
+
+    try: 
+        files = os.listdir('data')[0]
+        filename = "data/" + files
+        s3_file = 'bike-point/' + files
+
+        try: 
+        #Upoading File
+            s3_client.upload_file(filename, aws_bucket, s3_file)
+            print('Upload Successful')
+            os.remove(filename)
+            print('Deleted File')
+        except: 
+            print('Could not Upload')
+    except: 
+        print('no files')
