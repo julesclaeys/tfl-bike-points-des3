@@ -7,11 +7,11 @@ name: Bike Point Ingestion
 # or API.
 on:
 
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+#   schedule:
+#     - cron: '0 * * * *'
+#   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build: 
     runs-on: ubuntu-latest 
