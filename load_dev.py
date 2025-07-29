@@ -23,17 +23,20 @@ def load_bikes():
     #Setting up variables
 
     try: 
-        files = os.listdir('data')[0]
-        filename = "data/" + files
-        s3_file = 'bike-point/' + files
-
-        try: 
-        #Upoading File
-            s3_client.upload_file(filename, aws_bucket, s3_file)
-            print('Upload Successful')
-            os.remove(filename)
-            print('Deleted File')
-        except: 
-            print('Could not Upload')
+        files = os.listdir('data')
+        for file in files:
+            if not file.startswith('.'):
+                filename = "data/" + file
+                s3_file = 'bike-point/' + file
+                print(filename)
+        
+                try: 
+                #Upoading File
+                    s3_client.upload_file(filename, aws_bucket, s3_file)
+                    print('Upload Successful')
+                    os.remove(filename)
+                    print('Deleted File')
+                except: 
+                    print('Could not Upload')
     except: 
         print('no files')
