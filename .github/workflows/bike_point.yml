@@ -32,6 +32,7 @@ jobs:
         env: 
           aws_acces: ${{secrets.ACCESS_KEY}}
           aws_secret: ${{secrets.SECRET_KEY}}
+          bucket:  ${{secrets.AWS_BUCKET_NAME}}
         run: python main.py
         
       
